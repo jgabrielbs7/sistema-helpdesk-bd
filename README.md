@@ -82,7 +82,6 @@ O sistema permite o controle completo de solicitações de suporte, desde a aber
 
 Exemplos de consultas SQL utilizadas no projeto:
 
-```sql
 -- Chamados em aberto
 SELECT * FROM chamado
 WHERE id_status = 1;
@@ -162,6 +161,7 @@ CREATE TABLE Relatorio(
 	id_chamado INT NOT NULL,
 	FOREIGN KEY (id_chamado) REFERENCES Chamado(id_chamado)
 );
+```
 
 🛠️ Tecnologias Utilizadas
 PostgreSQL
