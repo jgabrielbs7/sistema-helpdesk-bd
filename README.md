@@ -163,35 +163,39 @@ CREATE TABLE Relatorio(
 );
 ```
 
-🛠️ Tecnologias Utilizadas
-PostgreSQL
-SQL (DDL e DML)
-Modelagem MER
-Git & GitHub
+###🛠️ Tecnologias Utilizadas
 
-🚀 Como Executar o Projeto
-git clone https://github.com/seu-usuario/sistema-helpdesk.git
-Acesse o PostgreSQL
-Execute os scripts SQL na ordem:
-Criação das tabelas
-Inserção de dados
-Consultas
+ - PostgreSQL
+ - SQL (DDL e DML)
+ - Modelagem MER
+ - Git & GitHub
 
-📌 Funcionalidades
-Cadastro de usuários
-Abertura de chamados
-Classificação por prioridade e categoria
-Atualização de status
-Consulta de histórico
+###🚀 Como Executar o Projeto
 
-📈 Melhorias Futuras
-Interface web completa
-API REST (Node.js ou Java Spring)
-Dashboard com gráficos
-Sistema de login com JWT
-Notificações automáticas
+ - git clone https://github.com/seu-usuario/sistema-helpdesk.git
+ - Acesse o PostgreSQL
+ - Execute os scripts SQL na ordem:
+ - Criação das tabelas
+ - Inserção de dados
+ - Consultas
 
-👨‍💻 Autor
+###📌 Funcionalidades
+
+ - Cadastro de usuários
+ - Abertura de chamados
+ - Classificação por prioridade e categoria
+ - Atualização de status
+ - Consulta de histórico
+
+###📈 Melhorias Futuras
+
+ - Interface web completa
+ - API REST (Node.js ou Java Spring)
+ - Dashboard com gráficos
+ - Sistema de login com JWT
+ - Notificações automáticas
+
+###👨‍💻 Autor
 
 João Gabriel
 Projeto acadêmico de Banco de Dados
