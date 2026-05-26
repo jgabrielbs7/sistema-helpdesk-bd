@@ -93,6 +93,7 @@ WHERE id_status = 1;
 ## 🗂️ Estrutura das Tabelas
 
 ### 👤 usuario
+
 ```sql
 CREATE TABLE Usuario (
 	id_usuario INT PRIMARY KEY,
@@ -102,7 +103,6 @@ CREATE TABLE Usuario (
 	tipo_usuario VARCHAR(100)
 );
 
-```sql
 CREATE TABLE Tecnico(
 	id_tecnico SERIAL PRIMARY KEY,
 	especialidade VARCHAR(100) NOT NULL,
@@ -111,14 +111,12 @@ CREATE TABLE Tecnico(
 	FOREIGN KEY (id_usuario) REFERENCES Usuario(id_usuario)
 );
 
-```sql
 CREATE TABLE Categoria(
 	id_categoria SERIAL PRIMARY KEY,
 	nome_categoria VARCHAR(100) NOT NULL,
 	descricao VARCHAR(500) NOT NULL
 );
 
-```sql
 CREATE TABLE Chamado(
 	id_chamado SERIAL PRIMARY KEY,
 	titulo VARCHAR(50) NOT NULL,
@@ -136,7 +134,6 @@ CREATE TABLE Chamado(
 	FOREIGN KEY (id_categoria) REFERENCES Categoria(id_categoria)
 );
 
-```sql
 CREATE TABLE Comentario(
 	id_comentario SERIAL PRIMARY KEY,
 	conteudo VARCHAR(500) NOT NULL,
@@ -147,7 +144,6 @@ CREATE TABLE Comentario(
 	FOREIGN KEY (id_usuario) REFERENCES Usuario(id_usuario)
 );
 
-```sql
 CREATE TABLE Historico(
 	id_historico SERIAL PRIMARY KEY,
 	campo_alt VARCHAR(50)NOT NULL,
@@ -158,7 +154,6 @@ CREATE TABLE Historico(
 	FOREIGN KEY (id_chamado) REFERENCES Chamado(id_chamado)
 );
 
-```sql
 CREATE TABLE Relatorio(
 	id_relatorio SERIAL PRIMARY KEY,
 	tipo VARCHAR(100) NOT NULL,
