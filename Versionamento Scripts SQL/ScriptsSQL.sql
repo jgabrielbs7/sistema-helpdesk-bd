@@ -82,3 +82,6 @@ CREATE TABLE Relatorio(
 	FOREIGN KEY (id_chamado) REFERENCES Chamado(id_chamado)
 );
 
+--Alteração devido a erros na inserção
+ALTER TABLE Chamado
+ALTER COLUMN encerrado_em DROP NOT NULL;
