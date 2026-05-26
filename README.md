@@ -198,5 +198,5 @@ CREATE TABLE Relatorio(
 ###👨‍💻 Autor
 
 João Gabriel
-Projeto acadêmico de Banco de Dados
+-- Projeto acadêmico de Banco de Dados
 
