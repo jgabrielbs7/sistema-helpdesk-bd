@@ -293,3 +293,12 @@ VALUES
 ('Chamados por categoria','Maio/2026','2026-05-31 18:20'),
 ('Chamados por prioridade','Maio/2026','2026-05-31 18:30'),
 ('Chamados por técnico','Maio/2026','2026-05-31 18:40');
+
+-- Selects para mostrar as tabelas
+SELECT * FROM Categoria;
+SELECT * FROM Chamado;
+SELECT * FROM Comentario;
+SELECT * FROM Historico;
+SELECT * FROM Relatorio;
+SELECT * FROM Tecnico;
+SELECT * FROM Usuario;
