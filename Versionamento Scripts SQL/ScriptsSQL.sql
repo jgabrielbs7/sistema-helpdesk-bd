@@ -302,3 +302,75 @@ SELECT * FROM Historico;
 SELECT * FROM Relatorio;
 SELECT * FROM Tecnico;
 SELECT * FROM Usuario;
+
+--INNER JOIN'S para verificar tabelas
+
+--Listar chamados com o nome do usuario e a categoria
+SELECT
+	c.id_chamado,
+	c.titulo,
+	c.status,
+	u.nome AS usuario,
+	cat.nome_categoria
+FROM chamado c
+INNER JOIN usuario u
+	ON c.id_usuario = u.id_usuario
+INNER JOIN categoria cat
+	ON  c.id_categoria = cat.id_categoria;
+
+--Listar chamados e técnicos responsáveis
+SELECT
+	c.id_chamado,
+	c.titulo,
+	t.id_tecnico AS tecnico,
+	c.status
+FROM chamado c
+INNER JOIN tecnico t
+	ON c.id_tecnico = t.id_tecnico;
+
+--Consultar com WHERE
+
+--Chamados em Aberto
+SELECT *
+FROM chamado
+WHERE status = 'Aberto';
+
+--Chamados de alta prioridade
+
+SELECT 
+	id_chamado,
+	titulo,
+	prioridade
+FROM chamado
+WHERE prioridade = 'Alta';
+
+--Função Agregada - Quantidade Total de chamados
+
+SELECT COUNT(*) AS total_chamados
+FROM chamado;
+
+--Chamados por status
+SELECT 
+	status,
+	COUNT(*) AS quantidade
+FROM chamado
+GROUP BY status;
+
+--Chamados por técnico
+SELECT 
+	t.id_tecnico AS tecnico,
+	COUNT(c.id_chamado) AS total_atendimento
+FROM tecnico t
+LEFT JOIN chamado c
+	ON t.id_tecnico = c.id_tecnico
+GROUP BY t.id_tecnico
+
+--Chamados por Categoria
+SELECT
+	cat.nome_categoria,
+	COUNT(c.id_chamado) AS quantidade
+FROM categoria cat
+LEFT JOIN chamado c
+	ON cat.id_categoria = c.id_categoria
+GROUP BY cat.nome_categoria
+ORDER BY quantidade DESC;
