@@ -374,3 +374,97 @@ LEFT JOIN chamado c
 	ON cat.id_categoria = c.id_categoria
 GROUP BY cat.nome_categoria
 ORDER BY quantidade DESC;
+
+--COMMIT 
+
+--Encerramento de um Chamado
+
+START TRANSACTION;
+
+UPDATE Chamado
+SET status = 'Encerrado',
+    encerrado_em = CURRENT_TIMESTAMP,
+    solucao = 'Problema resolvido pelo suporte'
+WHERE id_chamado = 1;
+
+COMMIT;
+
+--Verificação dos dados
+SELECT
+    id_chamado,
+    status,
+    encerrado_em,
+    solucao
+FROM Chamado
+WHERE id_chamado = 1;
+
+--ROLLBACK
+
+--Cancelamento da operação
+START TRANSACTION;
+
+UPDATE Chamado
+SET status = 'Encerrado',
+    encerrado_em = CURRENT_TIMESTAMP
+WHERE id_chamado = 4;
+
+ROLLBACK;
+
+--Verificação dos dados
+SELECT
+    id_chamado,
+    status,
+    encerrado_em
+FROM Chamado
+WHERE id_chamado = 4;
+
+--Simulação de cenário real de negócio - Atribuição de técnico a um chamado aberto
+
+START TRANSACTION;
+
+UPDATE Chamado
+SET id_tecnico = 3
+WHERE id_chamado = 6;
+
+UPDATE Chamado
+SET status = 'Em andamento'
+WHERE id_chamado = 6;
+
+COMMIT;
+
+--Verificação dos dados
+SELECT
+    id_chamado,
+    id_tecnico,
+    status
+FROM Chamado
+WHERE id_chamado = 6;
+
+--Registro no Histórico durante alterações
+START TRANSACTION;
+
+UPDATE Chamado
+SET status = 'Em andamento'
+WHERE id_chamado = 11;
+
+INSERT INTO Historico
+(campo_alt, val_anterior, val_novo, alt_em, id_chamado)
+VALUES
+('status', 'Aberto', 'Em andamento', CURRENT_TIMESTAMP, 11);
+
+COMMIT;
+
+--Simulação com ROLLBACK no Histórico
+START TRANSACTION;
+
+UPDATE Chamado
+SET status = 'Em andamento'
+WHERE id_chamado = 16;
+
+INSERT INTO Historico
+(campo_alt, val_anterior, val_novo, alt_em, id_chamado)
+VALUES
+('status', 'Aberto', 'Em andamento', CURRENT_TIMESTAMP, 999);
+
+ROLLBACK;
+
